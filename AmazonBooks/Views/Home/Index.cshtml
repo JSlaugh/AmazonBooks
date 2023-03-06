@@ -5,7 +5,28 @@
     ViewData["Title"] = "Home page";
 }
 
+@model BooksViewModel
+
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to Amazon</h1>
+    <p>Below you can find a list of available books there are only 10 books per page so please feel free to browse using the routes below</p>
 </div>
+
+
+<!--Display 10 books per page-->
+@foreach (Book book in Model.Books)
+            {
+<ul class="list-group mb-3">
+    <li class="list-group-item list-group-item-primary">Title: @book.Title</li>
+    <li class="list-group-item">Author: @book.Author</li>
+    <li class="list-group-item">Publisher: @book.Publisher</li>
+    <li class="list-group-item">ISBN: @book.Isbn</li>
+    <li class="list-group-item">Classification: @book.Classification</li>
+    <li class="list-group-item">Category: @book.Category</li>
+    <li class="list-group-item">PageCount: @book.PageCount</li>
+    <li class="list-group-item">Price: @book.Price</li>
+</ul>
+
+            }
+<!--Display Each Page Count-->
+<div page-model="@Model.PageInfo" page-action="Index" page-Classes-Enabled="true" page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-primary" class="btn-group pull-right m-1"></div>

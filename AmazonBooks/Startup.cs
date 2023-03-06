@@ -32,8 +32,11 @@ namespace AmazonBooks
 
             services.AddDbContext<BookstoreContext>(options =>
             {
-                options.UseSqlite(Configuration["ConnectionStrings:BookStoreDBConnection"]);
+                options.UseSqlite(Configuration["ConnectionStrings:DatabaseConnection"]);
             });
+
+
+            services.AddScoped<AmazonBookRepository, EFAmazonBookstoreRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
