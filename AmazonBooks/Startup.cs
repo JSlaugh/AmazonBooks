@@ -35,8 +35,8 @@ namespace AmazonBooks
                 options.UseSqlite(Configuration["ConnectionStrings:DatabaseConnection"]);
             });
 
-
-            services.AddScoped<AmazonBookRepository, EFAmazonBookstoreRepository>();
+            services.AddRazorPages();
+            services.AddScoped<IAmazonBookRepository, EFAmazonBookstoreRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,11 +62,28 @@ namespace AmazonBooks
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "categorypage",
+                    pattern: "{bookType}/Page{pageNum}",
+                    defaults: new { Controller = "Home", action = "Index" });
 
+                endpoints.MapControllerRoute(
+                    name: "Paging",
+                    pattern: "Page{pageNum}",
+                    defaults: new { Controller = "Home", action = "Index", pageNum = 1 });
+                endpoints.MapControllerRoute(
+                    name: "categorypage",
+                    pattern: "{bookType}",
+                    defaults: new { Controller = "Home", action = "Index", pageNum=1 });
+
+
+                
                 //Default Page
                 //look here
                 //look here
                 endpoints.MapDefaultControllerRoute();
+
+                endpoints.MapRazorPages();
             });
         }
     }

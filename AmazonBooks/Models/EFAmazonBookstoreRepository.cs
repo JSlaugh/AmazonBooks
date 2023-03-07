@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AmazonBooks.Models
 {
-    public class EFAmazonBookstoreRepository : AmazonBookRepository
+    public class EFAmazonBookstoreRepository : IAmazonBookRepository
     {
 
         private BookstoreContext context { get; set; }

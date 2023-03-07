@@ -14,26 +14,27 @@ namespace AmazonBooks.Controllers
 
         private BookstoreContext _context { get; set; }
 
-        private AmazonBookRepository repo;
-        public HomeController (AmazonBookRepository repository)
+        private IAmazonBookRepository repo;
+        public HomeController (IAmazonBookRepository repository)
         {
             repo = repository;
         }
         // This controllers main purpose is for displaying the home page which shows all of the books
-        public IActionResult Index(int pageNum)
+        public IActionResult Index(string bookType,int pageNum)
         {
             int returnedResultsCount = 10;
 
             var data = new BooksViewModel
             {
                 Books = repo.Books
+                .Where(book => book.Category == bookType || bookType ==null)
                 .OrderBy(book => book.Author)
-                .Skip(pageNum * returnedResultsCount)
+                .Skip((pageNum-1) * returnedResultsCount)
                 .Take(10),
 
                 PageInfo = new PageInfo
                 {
-                    TotalNumBooks = repo.Books.Count(),
+                    TotalNumBooks = ( bookType== null ? repo.Books.Count() : repo.Books.Where(x => x.Category ==bookType).Count()),
                     BooksPerPage = returnedResultsCount,
                     CurrentPage = pageNum
                 }

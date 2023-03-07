@@ -16,16 +16,8 @@
 <!--Display 10 books per page-->
 @foreach (Book book in Model.Books)
             {
-<ul class="list-group mb-3">
-    <li class="list-group-item list-group-item-primary">Title: @book.Title</li>
-    <li class="list-group-item">Author: @book.Author</li>
-    <li class="list-group-item">Publisher: @book.Publisher</li>
-    <li class="list-group-item">ISBN: @book.Isbn</li>
-    <li class="list-group-item">Classification: @book.Classification</li>
-    <li class="list-group-item">Category: @book.Category</li>
-    <li class="list-group-item">PageCount: @book.PageCount</li>
-    <li class="list-group-item">Price: @book.Price</li>
-</ul>
+
+       <partial name="BookSummary" model="book"/>
 
             }
 <!--Display Each Page Count-->

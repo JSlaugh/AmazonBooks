@@ -1,0 +1,30 @@
+﻿
+@{
+}
+
+@model Book
+
+<div>
+    <ul class="list-group ">
+        <li class="list-group-item list-group-item-primary">Title: @Model.Title</li>
+        <li class="list-group-item">Author: @Model.Author</li>
+        <li class="list-group-item">Publisher: @Model.Publisher</li>
+        <li class="list-group-item">ISBN: @Model.Isbn</li>
+        <li class="list-group-item">Classification: @Model.Classification</li>
+        <li class="list-group-item">Category: @Model.Category</li>
+        <li class="list-group-item">PageCount: @Model.PageCount</li>
+        <li class="list-group-item">Price: @Model.Price</li>
+    </ul>
+
+    <!-- Added a class for display flex and then added jutsify center-->
+    <form asp-page="/cart" method="post" class="mb-4 mt-1 d-flex justify-content-center">
+
+        <input type="hidden" asp-for="@Model.BookId"/>
+
+        <span class="card-text">
+            <button type="submit" class="btn-success btn-sm">Add to Cart</button>
+        </span>
+
+    </form>
+
+</div>

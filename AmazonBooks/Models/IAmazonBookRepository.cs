@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AmazonBooks.Models
 {
-    public interface AmazonBookRepository 
+    public interface IAmazonBookRepository 
     {
         IQueryable<Book> Books { get; }
     }

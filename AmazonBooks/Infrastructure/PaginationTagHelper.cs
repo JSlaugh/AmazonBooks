@@ -55,12 +55,12 @@ namespace AmazonBooks.Infrastructure
             // Create Individual links
 
 
-        for (int i = 0; i<PageModel.TotalPages; i++)
+        for (int i = 1; i<=PageModel.TotalPages; i++)
             {
                 TagBuilder tb = new TagBuilder("a");
                 tb.Attributes["href"] = uh.Action(PageAction, new { pageNum = i });
 
-                tb.InnerHtml.Append("Page "+(i+1).ToString());
+                tb.InnerHtml.Append("Page "+(i).ToString());
 
                 //Wrap up and add back to html
                 final.InnerHtml.AppendHtml(tb);
