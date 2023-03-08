@@ -37,6 +37,9 @@ namespace AmazonBooks
 
             services.AddRazorPages();
             services.AddScoped<IAmazonBookRepository, EFAmazonBookstoreRepository>();
+
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,7 +58,7 @@ namespace AmazonBooks
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();
 
             app.UseAuthorization();
@@ -84,6 +87,8 @@ namespace AmazonBooks
                 endpoints.MapDefaultControllerRoute();
 
                 endpoints.MapRazorPages();
+
+              
             });
         }
     }

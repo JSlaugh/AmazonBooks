@@ -3,4 +3,43 @@
 @{
 }
 
+<div class="d-flex">
+    <div class="col-2"></div>
+    <div class="col-8">
+        <h2>Your Cart</h2>
 
+        <table class="table table-bordered table-stripe">
+            <thead>
+                <tr>
+                    <th>Book</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var b in Model.basket.Items)
+                {
+
+                    <tr>
+                        <td>@b.Book.Title</td>
+                        <td>@b.Quantity</td>
+                        <td>@b.Book.Price</td>
+                        <td>@(b.Quantity*b.Book.Price)</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3">Total:</td>
+                    <td>@Model.basket.CalculateTotal().ToString("c")</td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <div>
+            <a class="btn btn-primary" href="@Model.ReturnUrl">Continue Shopping</a>
+        </div>
+    </div>
+    <div class="col-2"></div>
+</div>

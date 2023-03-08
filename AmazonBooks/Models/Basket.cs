@@ -7,7 +7,7 @@ namespace AmazonBooks.Models
 {
     public class Basket
     {
-        public List<BasketLineItem> Items { get; set; }
+        public List<BasketLineItem> Items { get; set; } = new List<BasketLineItem>();
 
 
         public void AddItem (Book book, int qty)
@@ -20,7 +20,7 @@ namespace AmazonBooks.Models
                 Items.Add(new BasketLineItem
                 {
                     Book = book,
-                    Quantity = qty
+                    Quantity = qty,
 
                 });
             }

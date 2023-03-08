@@ -20,7 +20,7 @@
     <form asp-page="/cart" method="post" class="mb-4 mt-1 d-flex justify-content-center">
 
         <input type="hidden" asp-for="@Model.BookId"/>
-
+        <input type="hidden" name="returnURL" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
         <span class="card-text">
             <button type="submit" class="btn-success btn-sm">Add to Cart</button>
         </span>
