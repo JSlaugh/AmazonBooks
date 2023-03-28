@@ -7,6 +7,8 @@ namespace AmazonBooks.Models
 {
     public class Basket
     {
+
+        List<string> yadda = new List<string>();
         public List<BasketLineItem> Items { get; set; } = new List<BasketLineItem>();
 
 
@@ -46,4 +48,7 @@ namespace AmazonBooks.Models
 
         public int Quantity { get; set; }
     }
+
+
+
 }

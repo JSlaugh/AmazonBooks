@@ -25,6 +25,7 @@ namespace AmazonBooks.Models
         [Required]
         public string Classification { get; set; }
         [Required]
+        [MaxLength(25)]
         public string Category { get; set; }
         [Required]
         public long PageCount { get; set; }
